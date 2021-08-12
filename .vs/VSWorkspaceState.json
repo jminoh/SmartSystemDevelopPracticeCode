@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ArrayTest",
-    "\\StringTest"
+    "\\ArrayTest"
   ],
-  "SelectedNode": "\\CTest.sln",
+  "SelectedNode": "\\ArrayTest\\StringTest.cpp",
   "PreviewInSolutionExplorer": false
 }
