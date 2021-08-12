@@ -1,0 +1,4 @@
+﻿  FuncTest.cpp
+C:\Users\snows\source\repos\CTest\FuncTest\FuncTest.cpp(19,7): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+C:\Users\snows\source\repos\CTest\FuncTest\FuncTest.cpp(15,6): warning C4101: 're' :참조되지 않은 지역 변수입니다.
+  FuncTest.vcxproj -> C:\Users\snows\source\repos\CTest\Debug\FuncTest.exe
