@@ -256,7 +256,7 @@ void swapTest(double sorting[][students])
 }
 #endif
 
-#if 0
+#if 1
 // 4강 마지막 실습 강사님
 #include <stdio.h>
 void sortEx(double* arr, int n); 
