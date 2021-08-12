@@ -1,2 +1,5 @@
 ﻿  StringTest.cpp
-  ArrayTest.vcxproj -> C:\Users\snows\source\repos\CTest\Debug\ArrayTest.exe
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\StringTest.cpp(672,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\StringTest.cpp(672,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\StringTest.cpp(700,12): warning C4101: 'temp' :참조되지 않은 지역 변수입니다.
+  ArrayTest.vcxproj -> C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\Debug\ArrayTest.exe
