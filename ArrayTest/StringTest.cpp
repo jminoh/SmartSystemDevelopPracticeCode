@@ -634,7 +634,8 @@ void inpuStruct(struct student a[], int b[], int c[], const char* d[])
 }
 #endif
 
-#if 1
+
+#if 0
 // 6Àå ±¸Á¶Ã¼ ½Ç½À °­»ç´Ô
 /*struct student {
 	int kor;
@@ -787,3 +788,26 @@ void SWAP(void* a, void* b, int op)  // Æ÷ÀÎÅÍ ¹Ş¾ÆÁÖ´Â ÂÊ¿¡¼­ void ÇÏ¸é, ÇÔ¼ö È
 }
 
 #endif
+
+
+#include <stdio.h>
+#include <string.h>
+// 210813 StreamTest
+
+int main(void)
+{
+	char buf[1024];
+	FILE* f = fopen("C:\\Users\\snows\\aa", "r");  // "r": read()  // ¾ø´Â ÆÄÀÏÀÌ¸é NULL ¹İÈ¯
+	if (f != NULL)
+	{
+		while (1)										// "w": write()
+		{
+			if (fgets(buf, 1024, f) == NULL) break;		// ÆÄÀÏ ÀÔ·Â ÇÔ¼ö
+			//if (strlen(buf) < 3) break;  // ¿£ÅÍµµ 0 ¾Æ´Ô. Ctrl+C·Î Å»Ãâ
+			//fputs("==== ÀÔ·Â¹®ÀÚ¿­ =====>", stdout);
+			fputs(buf, stdout); // È­¸é Ãâ·Â
+		}
+	}
+	else printf("ÀÔ·Â ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n");
+	return 0;
+}
