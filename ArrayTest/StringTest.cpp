@@ -789,25 +789,376 @@ void SWAP(void* a, void* b, int op)  // Æ÷ÀÎÅÍ ¹Ş¾ÆÁÖ´Â ÂÊ¿¡¼­ void ÇÏ¸é, ÇÔ¼ö È
 
 #endif
 
-
+#if 0
 #include <stdio.h>
 #include <string.h>
 // 210813 StreamTest
+// 210818
 
 int main(void)
 {
 	char buf[1024];
 	FILE* f = fopen("C:\\Users\\snows\\aa", "r");  // "r": read()  // ¾ø´Â ÆÄÀÏÀÌ¸é NULL ¹İÈ¯
+	FILE* fout0 = fopen("C:\\Users\\snows\\aa.o0", "w");  // "w": write,  fout0Àº file pointer, write´Â »õ °á°ú·Î °¥¾ÆÄ¡¿ò !=append
+	FILE* fout1 = fopen("C:\\Users\\snows\\aa.o1", "a");  // 
+	FILE* fout2 = fopen("C:\\Users\\snows\\aa.o2", "a+b");  // append: »õ °á°ú´Â ±âÁ¸ °á°ú ¹Ø¿¡ µ¡ºÙÀÓ
 	if (f != NULL)
 	{
 		while (1)										// "w": write()
 		{
-			if (fgets(buf, 1024, f) == NULL) break;		// ÆÄÀÏ ÀÔ·Â ÇÔ¼ö
+			if (fgets(buf, 1024, f) == NULL) break;		// ÆÄÀÏ ÀÔ·Â ÇÔ¼ö  , ÇÑ ÁÙ ´ÜÀ§·Î ÀĞ¾î¿È
 			//if (strlen(buf) < 3) break;  // ¿£ÅÍµµ 0 ¾Æ´Ô. Ctrl+C·Î Å»Ãâ
 			//fputs("==== ÀÔ·Â¹®ÀÚ¿­ =====>", stdout);
 			fputs(buf, stdout); // È­¸é Ãâ·Â
+			fputs(buf, fout0);
+			fputs(buf, fout1);
+			fputs(buf, fout2);
 		}
 	}
 	else printf("ÀÔ·Â ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n");
 	return 0;
 }
+#endif
+
+#if 0
+// 210818
+// File Stream ÀÌ¿ëÇÑ ¼ºÀûÇ¥
+// file ¾ÈÀÇ data ÀÌ¿ëÇÑ Ã³¸®
+
+#include <stdio.h>
+#include <string.h>
+typedef struct student {
+	int kor;
+	int eng;
+	char name[10];
+} STU;
+
+
+void sortEx(double* arr, int n);
+void swap(int* a, int* b);
+void swapEx(double* a, double* b);
+void swapEx1(char* a, char* b);
+void swapEx2(const char** a, const char** b);
+void SWAP(void* a, void* b, int op);
+
+const int nArr = 10;
+
+STU student[nArr];
+
+int main(void)
+{
+	double f_kor = 0.3, f_eng = 0.7;
+	double tot[nArr];
+	int i, j, k;
+
+	int m, n;
+	char buf[1024];
+	FILE* fin = fopen("C:\\Users\\snows\\table3.txt", "r");  // "r": read()  // table2ÀÇ data °¡Á®¿Ã ¼ö ÀÖ°Ô	
+	FILE* fout = fopen("C:\\Users\\snows\\table4.txt", "w+b");  // table4ÀÌ¶ó´Â ÆÄÀÏ »ı¼ºÇØ¼­ ÀúÀåÇÒ ¼ö ÀÖµµ·Ï
+
+	for (i = 0; i < nArr; i++)
+	{
+		fscanf(fin, "%s %d %d", buf, &m, &n);
+		student[i].kor = m;
+		student[i].eng = n;
+		strcpy(student[i].name, buf);
+		tot[i] = student[i].kor * f_kor + student[i].eng * f_eng;
+		//tot[i] = (student[i].kor = kor[i]) * f_kor + (student[i].eng = eng[i]) * f_eng; // À§ ¼¼ ÁÖ¼® ÇÑ ÁÙ·Î ÇÕÄ§.
+	}											// Á¡¼ö¸¦ ±¸Á¶Ã¼ÀÇ ¸â¹öº¯¼ö¿¡ ´ëÀÔÇÏ°í, °¡ÁßÄ¡ °öÇÔ. °¡ÁßÄ¡ °öÇØÁø µÎ Á¡¼ö¸¦ ´õÇØ tot¿¡ ´ëÀÔ.
+	printf("Original :\n");
+	printf("ÀÌ¸§: "); for (int i = 0; i < nArr; i++) printf("%7s ", student[i].name); printf("\n\n");
+	printf("±¹¾î: "); for (int i = 0; i < nArr; i++) printf("%7d ", student[i].kor); printf("\n\n");
+	printf("¿µ¾î: "); for (int i = 0; i < nArr; i++) printf("%7d ", student[i].eng); printf("\n\n");
+	printf("ÇÕ°è: "); for (int i = 0; i < nArr; i++) printf("%7.2lf ", tot[i]); printf("\n\n");
+
+	sortEx(tot, nArr);
+
+	printf("Sorted :\n");
+	//printf("ÀÌ¸§: "); for (int i = 0; i < nArr; i++) printf("%7s ", student[i].name); printf("\n\n");
+	//printf("±¹¾î: "); for (int i = 0; i < nArr; i++) printf("%7d ", student[i].kor); printf("\n\n");
+	//printf("¿µ¾î: "); for (int i = 0; i < nArr; i++) printf("%7d ", student[i].eng); printf("\n\n");
+	//printf("ÇÕ°è: "); for (int i = 0; i < nArr; i++) printf("%7.2lf ", tot[i]); printf("\n\n");
+	printf("ÀÌ¸§	±¹¾î	¿µ¾î	ÇÕ°è	\n");
+	fprintf(fout, "ÀÌ¸§	±¹¾î	¿µ¾î	ÇÕ°è	\n");  // table4¿¡ ½áÁú ³»¿ë
+	for (int i = 0; i < nArr; i++)
+	{
+		printf("%7s%7d%7d%7.2lf\n", student[i].name, student[i].kor, student[i].eng, tot[i]);
+		fprintf(fout, "%7s%7d%7d%7.2lf\n", student[i].name, student[i].kor, student[i].eng, tot[i]);   // table4¿¡ ½áÁú ³»¿ë
+	}
+
+	return 0;
+}
+void sortEx(double* arr, int nArr)
+{
+	int i, j, temp;
+	for (i = 0; i < nArr; i++)
+	{
+		for (j = i; j < nArr; j++)
+		{
+			if (arr[i] < arr[j])                              // swap ÇÔ¼ö »ç¿ëÇØµµ µÊ.
+			{
+				/*temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+
+				temp = kor[i];
+				kor[i] = kor[j];
+				kor[j] = temp;
+
+				temp = eng[i];
+				eng[i] = eng[j];
+				eng[j] = temp;
+
+				temp = nam[i];
+				nam[i] = nam[j];
+				nam[j] = temp;*/
+
+				//swapEx(arr + i, arr + j);    // = swap(&a[i], &a[j]); // tot: double
+				//swap(kor + i, kor + j);      // kor: int
+				//swap(eng + i, eng + j);      // eng: int
+				//swapEx1(nam + i, nam + j);
+				//swapEx2(name + i, name + j);
+				SWAP(arr + i, arr + j, 8);
+				SWAP(student + i, student + j, 18);  //
+				//SWAP(kor + i, kor + j, 4);
+				//SWAP(eng + i, eng + j, 4);  
+				//SWAP(name + i, name + j, 4);  // À§¿Í ÀÇ¹ÌÀûÀ¸·Î µ¿ÀÏ, nameÀÌ ¹®ÀÚ¿­ÀÇ ¹è¿­ == Æ÷ÀÎÅÍ(ÁÖ¼Ò °ª)
+			}
+		}
+	}
+}
+void swap(int* a, int* b)
+{
+	int c = *a;
+	*a = *b;
+	*b = c;
+}
+void swapEx(double* a, double* b)
+{
+	double c = *a;
+	*a = *b;
+	*b = c;
+}
+void swapEx1(char* a, char* b)
+{
+	char c = *a;
+	*a = *b;
+	*b = c;
+}
+void swapEx2(const char** a, const char** b)   // Data type ¸ÂÃçÁÖ´Â °ÍÀÌ ¿ì¼±. // parameter: string*(4byte º¯¼ö), ÁÖ¼Ò°¡ Àü´ŞµÈ °Í.
+{											// ³»¿ë ¹Ù²ï °Í ¾øÀ½, °ªÀÌ ¹Ù²î·Á¸é * ÇÊ¿ä    // const char* a[], const char* b[]
+	const char* c = *a;		// c* = a[]
+	*a = *b;				// a[0] = b[0]
+	*b = c;					// b[0] = c
+}
+void SWAP(void* a, void* b, int op)  // Æ÷ÀÎÅÍ ¹Ş¾ÆÁÖ´Â ÂÊ¿¡¼­ void ÇÏ¸é, ÇÔ¼ö È£Ãâ½Ã voidÆ÷ÀÎÅÍ¿¡ ³ÖÀ» ÇÊ¿ä ¾øÀ½. Æ÷ÀÎÅÍ¸¸ ´øÁö¸é µÊ.
+{										//	op´Â ÀÚ·áÇüÀÇ Å©±â
+	if (op == 1)			//char
+	{
+		char c = *(char*)a;
+		*(char*)a = *(char*)b;
+		*(char*)b = c;
+	}
+	else if (op == 4)		//int, float,
+	{
+		int c = *(int*)a;
+		*(int*)a = *(int*)b;
+		*(int*)b = c;
+	}
+	else if (op == 8)			//double
+	{
+		double c = *(double*)a;
+		*(double*)a = *(double*)b;
+		*(double*)b = c;
+	}
+	else if (op == 18)			//double
+	{
+		STU c = *(STU*)a;
+		*(STU*)a = *(STU*)b;
+		*(STU*)b = c;
+	}
+}
+#endif
+
+#if 0
+// 210818 ¼ºÀûÇ¥ ÀÌÀü Å×½ºÆ®
+#include <stdio.h>
+void StreamTest(void);
+int main()
+{
+	StreamTest();
+}
+void StreamTest(void)
+{
+	int m, n, i = 0;
+	char buf[1024];
+	FILE* fin = fopen("C:\\Users\\snows\\table1.txt", "r");  // "r": read()  // ¾ø´Â ÆÄÀÏÀÌ¸é NULL ¹İÈ¯	
+	FILE* fout = fopen("C:\\Users\\snows\\table2.txt", "w+b");  // 
+	if (fin != NULL)
+	{
+		while (i < 10)
+		{
+			fscanf(fin, "%s %d%* %d%*", buf, &m, &n);
+			fprintf(fout, "ÀÌ¸§: %s\n ±¹¾î Á¡¼ö: %d%*\n ¿µ¾î Á¡¼ö: %d%*\n", buf, m, n);
+			printf("ÀÌ¸§: %s\n ±¹¾î Á¡¼ö: %d%*\n ¿µ¾î Á¡¼ö: %d%*\n", buf, m, n);
+			i++;
+		}
+	}
+	else printf("ÀÔ·Â ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.\n");
+}
+#endif
+
+#if 1
+// 210818
+// File Stream ÀÌ¿ëÇÑ ¼ºÀûÇ¥
+// file ¾ÈÀÇ data ÀÌ¿ëÇÑ Ã³¸®
+// °­»ç´Ô, table1 ÀÌ¿ë, White space
+// avg Ãß°¡
+
+#include <stdio.h>
+#include <string.h>
+typedef struct student {	// tot¿¡ sortÇÔ¼ö¸¦ »ç¿ëÇÏ¸é¼­, studentµµ sortÇÏ±â À§ÇØ
+	char name[10];
+	int kor;
+	int eng;
+	double tot;
+	double avg;
+} STU;
+
+
+void sortEx(double* arr, int n);
+void swap(int* a, int* b);
+void swapEx(double* a, double* b);
+void swapEx1(char* a, char* b);
+void swapEx2(const char** a, const char** b);
+void SWAP(void* a, void* b, int op);
+void sortSTU(STU* a, int n);
+
+const int nArr = 10;
+STU student[nArr];
+
+int main(void)
+{
+	double f_kor = 0.3, f_eng = 0.7;
+	int i, j, k;
+
+	FILE* fin = fopen("C:\\Users\\snows\\table1.txt", "r");  // "r": read()  // table2ÀÇ data °¡Á®¿Ã ¼ö ÀÖ°Ô	
+	FILE* fout = fopen("C:\\Users\\snows\\table2.txt", "w+b");  // table2ÀÌ¶ó´Â ÆÄÀÏ »ı¼ºÇØ¼­ ÀúÀåÇÒ ¼ö ÀÖµµ·Ï
+
+	for (i = 0; i < nArr; i++) fscanf(fin, "%s", student[i].name);
+	for (i = 0; i < nArr; i++) fscanf(fin, "%d", &student[i].kor);
+	for (i = 0; i < nArr; i++) fscanf(fin, "%d", &student[i].eng);
+	for (i = 0; i < nArr; i++)
+	{
+		student[i].tot = student[i].kor + student[i].eng;
+		student[i].avg = student[i].tot / 2;
+	}
+
+	printf("Original :\n"); 
+	printf("%-7s %-7s %-7s %-7s %-7s\n\n", "ÀÌ¸§", "±¹¾î", "¿µ¾î", "ÃÑÁ¡", "Æò±Õ");
+	for (int i = 0; i < nArr; i++)
+	{
+		printf("%7s %7d %7d %7.2f %7.2f\n", student[i].name, student[i].kor, student[i].eng,
+			student[i].tot, student[i].avg);
+	}
+
+	sortSTU(student, nArr);
+
+	printf("Sorted :\n");
+	printf("%-7s %-7s %-7s %-7s %-7s\n\n", "ÀÌ¸§", "±¹¾î", "¿µ¾î", "ÃÑÁ¡", "Æò±Õ");
+	fprintf(fout, "%-7s %-7s %-7s %-7s %-7s\n\n", "ÀÌ¸§", "±¹¾î", "¿µ¾î", "ÃÑÁ¡", "Æò±Õ");
+	for (int i = 0; i < nArr; i++)
+	{
+		printf("%7s %7d %7d %7.2f %7.2f\n", student[i].name, student[i].kor, student[i].eng,
+			student[i].tot, student[i].avg); 
+		fprintf(fout, "%7s %7d %7d %7.2f %7.2f\n", student[i].name, student[i].kor, student[i].eng,
+			student[i].tot, student[i].avg); 
+	}
+	
+	return 0;
+}
+void sortSTU(STU* a, int n)
+{
+	int i, j, k;
+	for (i = 0; i < n; i++)
+	{
+		for (j = i; j < n; j++)
+		{
+			if ((a+i)->avg < (a+j)->avg)  // ±¸Á¶Ã¼ Æ÷ÀÎÅÍÀÇ °ª =>a[i].avg < a[j].avg, a+i: i¹øÂ° ±¸Á¶Ã¼, ->avg:ÀÇ avg ¸â¹ö
+			{								
+				SWAP(a + i, a + j, sizeof(STU));  // ±¸Á¶Ã¼ÀÇ size => sizeof(±¸Á¶Ã¼), Æ÷ÀÎÅÍ µÎ °³ ¹Ş¾Æ¼­ ±³È¯
+			}
+		}
+	}
+}
+
+void sortEx(double* arr, int nArr)
+{
+	int i, j, temp;
+	for (i = 0; i < nArr; i++)
+	{
+		for (j = i; j < nArr; j++)
+		{
+			if (arr[i] < arr[j])                              // swap ÇÔ¼ö »ç¿ëÇØµµ µÊ.
+			{
+				
+				SWAP(arr + i, arr + j, 8);
+				SWAP(student + i, student + j, 18); 
+				
+			}
+		}
+	}
+}
+void swap(int* a, int* b)
+{
+	int c = *a;
+	*a = *b;
+	*b = c;
+}
+void swapEx(double* a, double* b)
+{
+	double c = *a;
+	*a = *b;
+	*b = c;
+}
+void swapEx1(char* a, char* b)
+{
+	char c = *a;
+	*a = *b;
+	*b = c;
+}
+void swapEx2(const char** a, const char** b)   // Data type ¸ÂÃçÁÖ´Â °ÍÀÌ ¿ì¼±. // parameter: string*(4byte º¯¼ö), ÁÖ¼Ò°¡ Àü´ŞµÈ °Í.
+{											// ³»¿ë ¹Ù²ï °Í ¾øÀ½, °ªÀÌ ¹Ù²î·Á¸é * ÇÊ¿ä    // const char* a[], const char* b[]
+	const char* c = *a;		// c* = a[]
+	*a = *b;				// a[0] = b[0]
+	*b = c;					// b[0] = c
+}
+void SWAP(void* a, void* b, int op)  // Æ÷ÀÎÅÍ ¹Ş¾ÆÁÖ´Â ÂÊ¿¡¼­ void ÇÏ¸é, ÇÔ¼ö È£Ãâ½Ã voidÆ÷ÀÎÅÍ¿¡ ³ÖÀ» ÇÊ¿ä ¾øÀ½. Æ÷ÀÎÅÍ¸¸ ´øÁö¸é µÊ.
+{										//	op´Â ÀÚ·áÇüÀÇ Å©±â
+	if (op == 1)			//char
+	{
+		char c = *(char*)a;
+		*(char*)a = *(char*)b;
+		*(char*)b = c;
+	}
+	else if (op == 4)		//int, float,
+	{
+		int c = *(int*)a;
+		*(int*)a = *(int*)b;
+		*(int*)b = c;
+	}
+	else if (op == 8)			//double
+	{
+		double c = *(double*)a;
+		*(double*)a = *(double*)b;
+		*(double*)b = c;
+	}
+	else if (op == sizeof(STU))			//double
+	{
+		STU c = *(STU*)a;
+		*(STU*)a = *(STU*)b;
+		*(STU*)b = c;
+	}
+
+}
+#endif
