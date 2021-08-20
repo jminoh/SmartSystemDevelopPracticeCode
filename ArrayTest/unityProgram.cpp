@@ -5,6 +5,7 @@
 #include <math.h>
 #include <conio.h>
 #include <time.h>
+#include <iostream>
 
 const int students = 20;
 int score()
@@ -147,7 +148,7 @@ int SwapTest()
 	return 0;
 }
 
-void  sort(int* a, int n)
+void sort(int* a, int n)
 {
 	int i, j, k;
 
@@ -407,14 +408,98 @@ void StreamTest()
 	else printf("입력 파일이 존재하지 않습니다.\n");
 }
 
+#define KBD_BUF_SIZE 20
+#define MAX(x,y) x>y?x:y  // datatype에 종속 X
+#define MIN(x,y) x<y?x:y
+
+int GetInt()         // fgets 썼을 때 스페이스로 다음 숫자 받지 않음. 무조건 엔터
+{
+	char buf[KBD_BUF_SIZE];
+	//char nu = '\0';
+	fgets(buf, KBD_BUF_SIZE, stdin);
+	/*if (buf[strlen(buf) - 1] == '\n')    // 얘네도 같음
+		buf[strlen(buf) - 1];*/
+	//strcpy(buf + (strlen(buf) - 1), &nu);  // 두 수 사이에 스페이스 들어가면 뒷 수가 0나옴
+	return(atoi(buf));						// 디버거에서는 괜찮음.
+}
+double GetDouble()
+{
+	char buf[KBD_BUF_SIZE];
+	//char nu = '\0';
+	fgets(buf, KBD_BUF_SIZE, stdin);
+	//strcpy(buf + (strlen(buf) - 1), &nu);  // 두 수 사이에 스페이스 들어가면 뒷 수가 0나옴
+	return(atof(buf));
+}
+void StringParse() // 문자열을 입력받아서 int, double, 문자열 입력을 수행(scanf 사용 x)
+{
+	int k;
+	char b[5];
+	while (1)
+	{
+		printf("\n\n\n ==== 문자열 변환 테스트 =================\n");
+		printf("1. 정수 (int)\n");
+		printf("2. 실수 (double)\n");
+		printf("3. 문자열 (공백포함)\n");
+		printf("4. 매크로 함수 테스트\n");
+		printf("0. 나가기\n");
+		printf("==============================================\n");
+		printf("	Select Menu\n\n");
+		scanf("%d", &k); 
+		getchar();  // scanf로 입력할 경우 버퍼에 개행문자가 남기 때문에, 개행문자를 빼 주기 위해
+		// fgets(b, 5, stdin);
+		
+		if (k == 1)   // (b[0] == 0x31)   // 0x31 == 49 == 1
+		{
+			char buf[KBD_BUF_SIZE];
+			printf("정수을 입력하세요 : ");		//fgets는 키보드에서 enter가 입력될 때까지 받음
+			fgets(buf, KBD_BUF_SIZE, stdin);    //stdin: Keyboard, 무지막지하게 큰 수를 입력한다면, 반환되는 값은 2147483647이 나옴.(2G)
+			int n = atoi(buf);					// 정수값으로 변환할 수 없는 문자가 입력되면, 0을 반환함
+			printf("변환된 정수값은 %d 입니다.\n\n", n);
+		}
+		else if (k == 2)
+		{
+			char buf[KBD_BUF_SIZE];
+			printf("실수을 입력하세요 : ");
+			fgets(buf, KBD_BUF_SIZE, stdin);    //stdin: Keyboard
+			double f = atof(buf);					// 실수값으로 변환할 수 없는 문자가 입력되면, 0.000000을 반환함
+			printf("변환된 실수값은 %lf 입니다.\n\n", f);
+		}
+		else if (k == 3)
+		{
+			char buf[KBD_BUF_SIZE];
+			printf("문자열을 입력하세요 : ");
+			fgets(buf, KBD_BUF_SIZE, stdin);    //stdin: Keyboard, 무지막지하게 큰 수를 입력한다면
+			//int n = atoi(buf);
+			char nu = '\0';
+			strcpy(buf + (strlen(buf) - 1), &nu);
+			printf("변환된 문자열은 %s 입니다.\n\n", buf);
+		}
+		else if (k == 4)
+		{
+			int x, y; 
+			double x1, y1;
+			printf("두 개의 정수를 입력하세요 : ");
+			//scanf("%d%d", &x, &y);	//GetInt
+			x = GetInt(); y = GetInt();
+			printf("두 개의 정수 %d와 %d 중 큰 수는 %d 입니다.\n\n\n", x, y, MAX(x, y));
+			printf("두 개의 실수를 입력하세요 : ");
+			//scanf("%lf%lf", &x1, &y1);	//GetDouble
+			x1 = GetDouble(); y1 = GetDouble();
+			printf("두 개의 실수 %lf와 %lf 중 작은 수는 %lf 입니다.\n\n\n", x1, y1, MIN(x1, y1));
+		}
+		else if (k == 0) break;
+	}
+}
+
 
 int main()
 {
+	std::cout << "Hello C PlusPlus (C++) World!!!!";
 	int pick = 0, stop = 1;
 
 	while (stop)
 	{
-		printf("\n\n***** 프로그램 목록 *****\n\n");
+		printf("\n\n\n***** 프로그램 목록 *****\n\n\n");
 		printf("	1. score();\n");
 		printf("	2. Good();\n");
 		printf("	3. PointerTest();\n");
@@ -424,6 +509,7 @@ int main()
 		printf("	7. VoidTest();\n");
 		printf("	8. StreamTest();\n");
 		printf("	9. sortTestEx();\n");
+		printf("	10. StringParse();\n");
 		printf("	0. Exit\n");
 		printf("=========================\n");
 		printf("	Select Menu\n\n");
@@ -440,8 +526,8 @@ int main()
 		case 7: VoidTest(); break;
 		case 8: StreamTest(); break;
 		case 9: sortTestEx(); break;
-		case 0: stop = 0; break;
-		default: stop = 0; break;
+		case 10: StringParse(); break;
+		default: return 0;
 		}
 	}
 }

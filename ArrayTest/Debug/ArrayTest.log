@@ -1,32 +1,33 @@
 ﻿  unityProgram.cpp
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(16,12): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(12,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(12,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(78,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(17,12): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(13,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(13,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
 C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(79,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
 C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(80,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
 C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(81,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(82,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int (*)[2]'입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(84,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int (*)[2]'입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(82,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(83,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int (*)[2]'입니다.
 C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(85,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int (*)[2]'입니다.
 C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(86,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int (*)[2]'입니다.
 C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(87,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int (*)[2]'입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(96,6): warning C4101: 'i' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(141,9): warning C4477: 'printf' : 서식 문자열 '%08x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(141,9): warning C4477: 'printf' : 서식 문자열 '%08x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 3의 형식이 'int *'입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(145,9): warning C4477: 'printf' : 서식 문자열 '%08x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(145,9): warning C4477: 'printf' : 서식 문자열 '%08x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 3의 형식이 'int *'입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(152,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(235,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(258,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(276,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(276,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(301,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(301,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(332,6): warning C4101: 'm' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(330,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(333,7): warning C4101: 'buf' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(330,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(332,9): warning C4101: 'n' :참조되지 않은 지역 변수입니다.
-C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(381,8): warning C4101: 'vp' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(88,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int (*)[2]'입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(97,6): warning C4101: 'i' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(142,9): warning C4477: 'printf' : 서식 문자열 '%08x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(142,9): warning C4477: 'printf' : 서식 문자열 '%08x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 3의 형식이 'int *'입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(146,9): warning C4477: 'printf' : 서식 문자열 '%08x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(146,9): warning C4477: 'printf' : 서식 문자열 '%08x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 3의 형식이 'int *'입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(153,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(236,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(259,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(277,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(277,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(302,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(302,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(333,6): warning C4101: 'm' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(331,12): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(334,7): warning C4101: 'buf' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(331,9): warning C4101: 'j' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(333,9): warning C4101: 'n' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(382,8): warning C4101: 'vp' :참조되지 않은 지역 변수입니다.
+C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\ArrayTest\unityProgram.cpp(436,7): warning C4101: 'b' :참조되지 않은 지역 변수입니다.
   ArrayTest.vcxproj -> C:\Users\snows\source\repos\SmartSystemDevelopPracticeCode\Debug\ArrayTest.exe
