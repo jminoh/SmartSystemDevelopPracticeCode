@@ -16,4 +16,6 @@ int main()
 	printf("lo = %5d	sizeof(lo) = %d\n", lo, sizeof(lo));
 	printf("flo = %5f	sizeof(flo) = %d\n", pi, sizeof(pi));
 	printf("db = %5lf	sizeof(db) = %d\n", db, sizeof(db));
+
+	return 0;
 }
